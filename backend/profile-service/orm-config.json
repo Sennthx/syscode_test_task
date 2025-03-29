@@ -1,0 +1,12 @@
+{
+    "type": "postgres",
+    "host": "postgres",
+    "port": 5432,
+    "username": "postgres",
+    "password": "postgres",
+    "database": "profile_db",
+    "synchronize": false,
+    "logging": true,
+    "entities": ["src/entity/**/*.ts"],
+    "migrations": ["src/migration/**/*.ts"]
+}
