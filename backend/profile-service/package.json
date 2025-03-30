@@ -7,12 +7,14 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "ts-node src/index.ts",
+    "seed": "ts-node src/scripts/seed.ts",
     "test": "jest --detectOpenHandles",
     "test:coverage": "jest --coverage"
   },
   "author": "Tóth Áron",
   "license": "ISC",
   "dependencies": {
+    "@faker-js/faker": "^9.6.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "dotenv": "^16.4.7",
@@ -20,6 +22,7 @@
     "pg": "^8.14.1",
     "reflect-metadata": "^0.2.2",
     "typeorm": "^0.3.21",
+    "typeorm-extension": "^3.7.0",
     "uuid": "^11.1.0",
     "winston": "^3.17.0"
   },
