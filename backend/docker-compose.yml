@@ -1,0 +1,41 @@
+services:
+  profile-service:
+    build: ./profile-service
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - liquibase
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: testuser
+      DB_PASSWORD: testpass
+      DB_NAME: testdb
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpass
+      POSTGRES_DB: testdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U testuser -d testdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  liquibase:
+    image: liquibase/liquibase
+    depends_on:
+      db:
+        condition: service_healthy
+    working_dir: /liquibase/changelog
+    volumes:
+      - ./profile-service/db:/liquibase/changelog
+    command: ["--defaults-file=/liquibase/changelog/liquibase.properties", "update"]
+
+volumes:
+  postgres_data:
