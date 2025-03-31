@@ -1,0 +1,5 @@
+start the database:
+    docker-compose -f docker-compose.base.yml up -d db
+
+start the profile-service with its dependencies:
+    docker-compose -f docker-compose.base.yml -f docker-compose.profile.yml up
