@@ -1,0 +1,24 @@
+services:
+  profile-service:
+    build: ./profile-service
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - liquibase-profile
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: testuser
+      DB_PASSWORD: testpass
+      DB_NAME: testdb
+
+  liquibase-profile:
+    image: liquibase/liquibase
+    depends_on:
+      db:
+        condition: service_healthy
+    working_dir: /liquibase/changelog
+    volumes:
+      - ./profile-service/db:/liquibase/changelog
+    command: ["--defaults-file=/liquibase/changelog/liquibase.properties", "update"]
