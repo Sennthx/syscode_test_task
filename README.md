@@ -52,17 +52,13 @@ cd syscode-tesztfeladat
 ## Managing Services
 
 ### Start All Services
-```bash
 docker-compose up --build -d
 
 ### Start a Specific Service
-```bash
 docker-compose up -d <service-name>
 
 ### Stop All Services
-```bash
 docker-compose down
 
 ### Stop a Specific Service
-```bash
 docker-compose stop <service-name>
