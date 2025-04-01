@@ -42,13 +42,6 @@ Two Dockerized Node.js microservices for managing student profiles and addresses
 
 ## Setup
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/your-username/syscode-tesztfeladat.git
-cd syscode-tesztfeladat
-
-# Docker Compose Management Guide
-
 ## Managing Services
 
 ### Start All Services
