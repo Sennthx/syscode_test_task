@@ -45,13 +45,19 @@ Two Dockerized Node.js microservices for managing student profiles and addresses
 ## Managing Services
 
 ### Start All Services
+```bash
 docker-compose up --build -d
-
+```
 ### Start a Specific Service
+```bash
 docker-compose up -d <service-name>
+```
 
 ### Stop All Services
+```bash
 docker-compose down
-
+```
 ### Stop a Specific Service
+```bash
 docker-compose stop <service-name>
+```
