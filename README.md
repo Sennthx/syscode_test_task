@@ -1,6 +1,6 @@
 # Student Profile & Address Microservices
 
-Two Dockerized Node.js microservices for managing student profiles and addresses, built with PostgreSQL, TypeORM, and REST APIs. Includes testing, logging, and load-testing support.
+Two Dockerized Node.js microservices for managing student profiles and addresses, built with PostgreSQL, TypeORM, and REST APIs. The frontend written in Angular is containerized aswell.
 
 ---
 
@@ -14,7 +14,7 @@ Two Dockerized Node.js microservices for managing student profiles and addresses
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Component              | Technology                                                                 |
 |------------------------|----------------------------------------------------------------------------|
@@ -31,7 +31,7 @@ Two Dockerized Node.js microservices for managing student profiles and addresses
 
 ---
 
-## ⚙️ Prerequisites
+## Prerequisites
 
 - Node.js v18+
 - Docker & Docker Compose
@@ -40,7 +40,7 @@ Two Dockerized Node.js microservices for managing student profiles and addresses
 
 ---
 
-## 🚀 Setup
+## Setup
 
 ### 1. Clone the Repository
 ```bash
