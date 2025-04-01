@@ -1,1 +1,90 @@
-<p>home works!</p>
+<div class="min-h-screen flex flex-col items-center justify-center bg-base-100 p-6">
+  <div class="max-w-2xl w-full bg-base-200 rounded-box shadow-lg p-8">
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold text-primary mb-4">About This Page</h1>
+      <div class="divider"></div>
+    </div>
+
+    <div class="prose prose-lg max-w-none">
+      <p class="mb-6">
+        This application manages student information through a RESTful API. The main features include:
+      </p>
+
+      <div class="space-y-6">
+        <div class="card bg-base-100 shadow">
+          <div class="card-body">
+            <h2 class="card-title text-secondary">/students Endpoint</h2>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>Lists all students in a table view</li>
+              <li>Add new students using the <span class="badge badge-primary mx-2">Add New Student</span> button</li>
+              <li>Edit existing student information with the <span class="badge badge-primary mx-2">Edit</span> button
+              </li>
+              <li>Remove students using the <span class="badge badge-error mx-2">Delete</span> button</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Address Feature Card -->
+        <div class="card bg-base-100 shadow">
+          <div class="card-body">
+            <h2 class="card-title text-accent">Address Information</h2>
+            <p>
+              To view a student's address, click the
+              <span class="badge badge-info mx-2">View Address</span> button next to their record.
+            </p>
+            <div class="mt-4 bg-neutral text-neutral-content p-4 rounded-box">
+              <p class="font-mono text-sm">
+                Note: The address endpoint is protected with Basic Auth (which is currently only used in the get
+                request)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- API Documentation Card -->
+        <div class="card bg-base-100 shadow">
+          <div class="card-body">
+            <h2 class="card-title">API Documentation</h2>
+            <div class="overflow-x-auto">
+              <table class="table table-zebra">
+                <thead>
+                  <tr>
+                    <th>Endpoint</th>
+                    <th>Method</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>/students</td>
+                    <td><span class="badge badge-success">GET</span></td>
+                    <td>List all students</td>
+                  </tr>
+                  <tr>
+                    <td>/students</td>
+                    <td><span class="badge badge-primary">POST</span></td>
+                    <td>Add new student</td>
+                  </tr>
+                  <tr>
+                    <td>/students/:id</td>
+                    <td><span class="badge badge-warning">UPDATE</span></td>
+                    <td>Update student</td>
+                  </tr>
+                  <tr>
+                    <td>/address/:id</td>
+                    <td><span class="badge badge-success">GET</span></td>
+                    <td>Get student address (Basic Auth)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a routerLink="/students" class="btn btn-primary">View students</a>
+      </div>
+    </div>
+  </div>
+</div>
