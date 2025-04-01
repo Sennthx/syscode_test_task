@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import express from 'express';
 import { StudentController } from './controllers/StudentController';
 import { AppDataSource } from './database/datasource';
