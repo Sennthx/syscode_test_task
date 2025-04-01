@@ -1,18 +1,20 @@
 import { AppDataSource } from '../database/datasource';
 import StudentSeeder from '../database/seeds/StudentSeeder';
+import logger from '../logger'
 
 async function runSeeds() {
     try {
         await AppDataSource.initialize();
-        console.log('Database connected, running seeds...');
+        logger.info('Database connected, running seeds...');
 
         const seeder = new StudentSeeder();
         await seeder.run(AppDataSource);
 
-        console.log('Seeding completed!');
+        logger.info('Seeding completed!');
         process.exit(0);
+
     } catch (error) {
-        console.error('Seeding failed:', error);
+        logger.error('Seeding failed:', error);
         process.exit(1);
     }
 }
