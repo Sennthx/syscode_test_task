@@ -9,8 +9,6 @@ Two Dockerized Node.js microservices for managing student profiles and addresses
 - **Profile Service**: CRUD operations for `Student` entities (UUID, name, validated email) with PostgreSQL and Liquibase migrations.
 - **Address Service**: REST endpoint to fetch `Address` (UUID, address) with Basic Authentication.
 - **Features**: 
-  - OpenAPI 3.0 documentation
-  - Unit/Integration Tests (80%+ coverage)
   - Dockerized deployment
   - Load testing (10,000+ requests)
 
@@ -28,7 +26,7 @@ Two Dockerized Node.js microservices for managing student profiles and addresses
 | **Testing**            | Jest (unit/integration) + Supertest                                        |
 | **Logging**            | Winston                                                                    |
 | **Containerization**   | Docker + Docker Compose                                                    |
-| **Load Testing**       | Artillery                                                                  |
+| **Load Testing**       | Axios script                                                                  |
 | **API Documentation**  | OpenAPI 3.0/Swagger                                                        |
 
 ---
@@ -48,3 +46,23 @@ Two Dockerized Node.js microservices for managing student profiles and addresses
 ```bash
 git clone https://github.com/your-username/syscode-tesztfeladat.git
 cd syscode-tesztfeladat
+
+# Docker Compose Management Guide
+
+## Managing Services
+
+### Start All Services
+```bash
+docker-compose up --build -d
+
+### Start a Specific Service
+```bash
+docker-compose up -d <service-name>
+
+### Stop All Services
+```bash
+docker-compose down
+
+### Stop a Specific Service
+```bash
+docker-compose stop <service-name>
