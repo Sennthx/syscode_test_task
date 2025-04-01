@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StudentService } from '../../core/services/student.service';
 
-
 interface Student {
   id: string;
   name: string;
