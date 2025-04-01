@@ -7,6 +7,7 @@ export default class StudentSeeder implements Seeder {
     public async run(dataSource: DataSource): Promise<void> {
         const repository = dataSource.getRepository(Student);
 
+        await repository.delete({});
         const students = StudentFactory.create(20);
 
         await repository.save(students);
