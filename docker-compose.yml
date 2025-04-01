@@ -1,5 +1,4 @@
 services:
-  # Database (from base)
   db:
     image: postgres:13
     environment:
@@ -16,7 +15,6 @@ services:
     networks:
       - app-network
 
-  # Profile Service
   profile-service:
     build: ./backend/profile-service
     ports:
@@ -35,7 +33,6 @@ services:
     networks:
       - app-network
 
-  # Liquibase Migration
   liquibase-profile:
     image: liquibase/liquibase
     depends_on:
@@ -48,7 +45,6 @@ services:
     networks:
       - app-network
 
-  # Address Service
   address-service:
     build: ./backend/address-service
     ports:
@@ -62,7 +58,6 @@ services:
     networks:
       - app-network
 
-  # Frontend
   frontend:
     build: ./frontend
     ports:
