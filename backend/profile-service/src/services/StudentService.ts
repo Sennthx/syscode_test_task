@@ -1,29 +1,25 @@
 import { AppDataSource } from '../database/datasource';
 import { Student } from '../entities/Student';
-import validator from 'validator';
+import { validate } from 'class-validator';
 import logger from '../logger';
 
 export class StudentService {
     private studentRepository = AppDataSource.getRepository(Student);
 
-    private validateStudentData(studentData: { name: string; email: string }) {
-        if (!studentData.name || !studentData.email) {
-            throw new Error('Name and email are required');
-        }
+    private async validateStudentData(studentData: { name: string; email: string }) {
+        const student = new Student();
+        student.name = studentData.name;
+        student.email = studentData.email;
 
-        studentData.name = studentData.name.trim();
-        if (studentData.name.length < 2 || studentData.name.length > 50) {
-            throw new Error('Name must be between 2 and 50 characters');
-        }
-
-        if (!validator.isEmail(studentData.email)) {
-            throw new Error('Invalid email format');
+        const errors = await validate(student);
+        if (errors.length > 0) {
+            throw new Error(errors.map(e => Object.values(e.constraints || {})).join(', '));
         }
     }
 
     async create(studentData: { name: string; email: string }): Promise<Student> {
         try {
-            this.validateStudentData(studentData);
+            await this.validateStudentData(studentData);
 
             const existingStudent = await this.studentRepository.findOneBy({
                 email: studentData.email
@@ -37,9 +33,7 @@ export class StudentService {
             return await this.studentRepository.save(student);
         } catch (error) {
             logger.error('Create student failed:', error);
-            throw new Error(
-                error instanceof Error ? error.message : 'Failed to create student'
-            );
+            throw error;
         }
     }
 
