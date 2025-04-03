@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-address-table
+      author: dev
+      changes:
+        - createTable:
+            tableName: address
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValueComputed: "uuid_generate_v4()"
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: student_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address
+                  type: VARCHAR(500)
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: address
+            baseColumnNames: student_id
+            constraintName: fk_address_student
+            referencedTableName: student
+            referencedColumnNames: id
+            onDelete: CASCADE

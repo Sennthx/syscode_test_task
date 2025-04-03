@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: profile-changes/db.changelog-profile-1.0.yaml
+  - include:
+      file: address-changes/db.changelog-address-1.0.yaml

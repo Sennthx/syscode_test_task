@@ -40,8 +40,8 @@ services:
         condition: service_healthy
     working_dir: /liquibase/changelog
     volumes:
-      - ./backend/profile-service/db:/liquibase/changelog
-    command: [ "--defaults-file=/liquibase/changelog/liquibase.properties", "update" ]
+      - ./backend/shared-db:/liquibase/changelog
+    command: [ "--defaults-file=liquibase.properties", "update" ]
     networks:
       - app-network
 
@@ -50,11 +50,19 @@ services:
     ports:
       - "3001:3001"
     environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: testuser
+      DB_PASSWORD: testpass
+      DB_NAME: testdb
       AUTH_USER: admin
       AUTH_PASS: admin1234
       PORT: 3001
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+      liquibase-profile:
+        condition: service_completed_successfully
     networks:
       - app-network
 
@@ -67,7 +75,6 @@ services:
 
 volumes:
   postgres_data:
-
 
 networks:
   app-network:
