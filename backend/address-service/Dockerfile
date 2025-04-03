@@ -12,5 +12,6 @@ RUN npm run build
 
 EXPOSE 3001
 
-CMD npm run start
+CMD ["sh", "-c", "npm run seed && npm run start"]
+
 
