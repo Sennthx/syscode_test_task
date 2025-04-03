@@ -1,6 +1,7 @@
 # Student Profile & Address Microservices
 
 Two Dockerized Node.js microservices for managing student profiles and addresses, built with PostgreSQL, TypeORM, and REST APIs. The frontend written in Angular is containerized aswell.
+To view the openapi.yaml you can just paste the content of the file into the website https://editor.swagger.io/ 
 
 ---
 
