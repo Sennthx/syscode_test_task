@@ -1,7 +1,25 @@
-import { faker } from '@faker-js/faker';
+import { AppDataSource } from '../database/datasource';
+import { Address } from '../entities/Address';
+import logger from '../logger';
 
 export class AddressService {
-    find(id: string): string {
-        return faker.location.streetAddress({ useFullAddress: true })
+    private addressRepository = AppDataSource.getRepository(Address);
+
+    async find(studentId: string): Promise<string | null> {
+        try {
+            const address = await this.addressRepository.findOne({
+                where: { studentId: studentId }
+            });
+
+            if (!address) {
+                logger.warn(`No address found for student ${studentId}`);
+                return null;
+            }
+
+            return address.address;
+        } catch (error) {
+            logger.error(`Error finding address for student ${studentId}:`, error);
+            throw error;
+        }
     }
 }

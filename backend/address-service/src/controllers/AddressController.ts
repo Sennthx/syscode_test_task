@@ -14,7 +14,7 @@ export class AddressController {
     getAddress = async (req: Request, res: Response) => {
         const id = req.params.id;
         try {
-            const address = this.addressService.find(id);
+            const address = await this.addressService.find(id);
             logger.info(`Successfully retrieved address for ID: ${id}`);
             res.status(200).json({ id, address });
         } catch (error) {
